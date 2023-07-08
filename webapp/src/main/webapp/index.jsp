@@ -3,3 +3,4 @@ JUNE 2023 CLASS PROJECT1.
 I am excited i am able to practice today
 I am up today again to practice, May God almighty help me to understand today. 
 wow!! i love this class already
+i just did my practice again, i hope it works this time
