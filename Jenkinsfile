@@ -1,33 +1,44 @@
 pipeline{
-tools{
-jdk 'java'
-maven 'mymaven'
-}
-agent any
-stages{
-stage('Clone Repo')
-{
-steps{
-git 'https://github.com/RayItern/JUNECLASSPRO1.git'
-}
-}
-stage('Compile the code')
-{
-steps{
-sh 'mvn compile'
-}
-}
-stage('Code Analysis')
-{
-steps{
-sh 'mvn pmd:pmd'
-}
-}
-stage('Build the artifact')
-{
-steps{
-sh 'mvn package'
-}
-}
-}
+    tools{
+        jdk 'Halijava'
+        maven 'Halimaven'
+    }
+	agent any
+      stages{
+           stage('Checkout'){
+              steps{
+		 echo 'cloning..'
+                 git 'https://github.com/Halimat9860/MY-PRACTICE.git'
+              }
+          }
+          stage('Compile'){
+              steps{
+                  echo 'compiling..'
+                  sh 'mvn compile'
+	      }
+          }
+          stage('CodeReview'){
+              steps{
+		    
+		  echo 'codeReview'
+                  sh 'mvn pmd:pmd'
+              }
+          }
+           stage('UnitTest'){
+              steps{
+	         echo 'Testing'
+                  sh 'mvn test'
+              }
+               post {
+               success {
+                   junit 'target/surefire-reports/*.xml'
+               }
+           }	
+          }
+          stage('Package'){
+              steps{
+                  sh 'mvn package'
+              }
+          }
+      }
 }
